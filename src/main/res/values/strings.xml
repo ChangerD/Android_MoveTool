@@ -1,0 +1,5 @@
+<resources>
+    <string name="cancel">cancel</string>
+    <string name="comfirm">comfirm</string>
+    <string name="retry">retry</string>
+</resources>
