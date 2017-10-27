@@ -16,7 +16,7 @@ import com.topxgun.appbase.component.toast.CustomToast;
 import com.topxgun.appbase.dao.spf.ConfigSPF;
 
 import butterknife.ButterKnife;
-import org.greenrobot.eventbus.EventBus;
+import de.greenrobot.event.EventBus;
 
 /**
  * Created by Jwding on 2017/8/7.
@@ -152,14 +152,23 @@ public abstract class BaseSubFragment extends Fragment implements OnClickListene
                 public void run() {
                     WaitDialog.show(mContext);
                 }
-            },200);
+            },10);
         }else{
             WaitDialog.show(mContext);
         }
     }
 
     public void hideWaitDialog() {
-        WaitDialog.dismiss();
+        if(mContext!=null&&mContext instanceof BaseActivity){
+            ((BaseActivity) mContext).mHandler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    WaitDialog.dismiss();
+                }
+            },300);
+        }else{
+            WaitDialog.dismiss();
+        }
     }
 
     public void showWaitDialog(String messsage) {

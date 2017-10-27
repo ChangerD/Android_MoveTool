@@ -92,4 +92,8 @@ public class ComfirmDialog extends Dialog{
         return this;
     }
 
+    public View getViewById(int id){
+        return findViewById(id);
+    }
+
 }

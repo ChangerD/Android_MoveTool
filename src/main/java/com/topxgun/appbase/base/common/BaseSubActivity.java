@@ -11,7 +11,7 @@ import com.topxgun.appbase.component.toast.CustomToast;
 import com.topxgun.appbase.dao.spf.ConfigSPF;
 
 import butterknife.ButterKnife;
-import org.greenrobot.eventbus.EventBus;
+import de.greenrobot.event.EventBus;
 
 /**
  * Created by Jwding on 2017/8/7.
@@ -49,13 +49,14 @@ public abstract class BaseSubActivity extends BaseActivity {
         }
     }
 
-    /**
+/*    *//**
      * 防止eventbus崩溃
      * @param emptyEvent
-     */
+     *//*
+    @Subscribe
     public void onEvent(Object emptyEvent){
 
-    }
+    }*/
 
 
     @Override

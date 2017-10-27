@@ -69,7 +69,7 @@ public class MWheelView extends ScrollView {
 
     List<String> items;
 
-    private List<String> getItems() {
+    public List<String> getItems() {
         return items;
     }
 
@@ -260,6 +260,7 @@ public class MWheelView extends ScrollView {
     public void setBackgroundDrawable(Drawable background) {
 
         if (viewWidth == 0) {
+            if(context!=null)
             viewWidth = ((Activity) context).getWindowManager().getDefaultDisplay().getWidth();
             Log.d(TAG, "viewWidth: " + viewWidth);
         }
@@ -273,8 +274,8 @@ public class MWheelView extends ScrollView {
         background = new Drawable() {
             @Override
             public void draw(Canvas canvas) {
-                canvas.drawLine(viewWidth * 1 / 6, obtainSelectedAreaBorder()[0], viewWidth * 5 / 6, obtainSelectedAreaBorder()[0], paint);
-                canvas.drawLine(viewWidth * 1 / 6, obtainSelectedAreaBorder()[1], viewWidth * 5 / 6, obtainSelectedAreaBorder()[1], paint);
+                canvas.drawLine(0, obtainSelectedAreaBorder()[0], viewWidth, obtainSelectedAreaBorder()[0], paint);
+                canvas.drawLine(0, obtainSelectedAreaBorder()[1], viewWidth, obtainSelectedAreaBorder()[1], paint);
             }
 
             @Override
