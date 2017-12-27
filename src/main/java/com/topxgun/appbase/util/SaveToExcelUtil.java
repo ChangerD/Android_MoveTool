@@ -6,11 +6,14 @@ import android.util.Log;
 import android.widget.Toast;
 
 import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
 
 import jxl.Workbook;
 import jxl.write.Label;
 import jxl.write.WritableSheet;
 import jxl.write.WritableWorkbook;
+import jxl.write.WriteException;
 
 /**
  * Created by Jwding on 2017/10/25.
@@ -72,17 +75,22 @@ public class SaveToExcelUtil {
         }
     }
 
-    //将数据存入到Excel表中
-    public void writeToExcel(Object... args) {
+    Workbook workbook = null;
 
+    //将数据存入到Excel表中
+    public void writeToExcel(ArrayList<Object[]> argsList) {
         try {
             Workbook oldWwb = Workbook.getWorkbook(excelFile);
             wwb = Workbook.createWorkbook(excelFile, oldWwb);
+
             WritableSheet ws = wwb.getSheet(0);
             // 当前行数
             int row = ws.getRows();
-            for(int i=0;i<args.length;i++){
-                ws.addCell(new Label(i, row, args[i] + ""));
+            for(Object[] args:argsList){
+                for (int i = 0; i < args.length; i++) {
+                    ws.addCell(new Label(i, row, args[i] + ""));
+                }
+                row++;
             }
             // 从内存中写入文件中,只能刷一次.
             wwb.write();
@@ -91,6 +99,21 @@ public class SaveToExcelUtil {
             e.printStackTrace();
         }
     }
+
+    public void closeWWB() {
+/*        if (wwb != null) {
+            try {
+                wwb.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (WriteException e) {
+                e.printStackTrace();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }*/
+    }
+
 
     public static String getExcelDir() {
         // SD卡指定文件夹

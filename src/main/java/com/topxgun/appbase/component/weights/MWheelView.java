@@ -1,4 +1,4 @@
-package com.topxgun.appbase.component.wheelview;
+package com.topxgun.appbase.component.weights;
 
 import android.app.Activity;
 import android.content.Context;
@@ -28,6 +28,7 @@ import java.util.List;
 
 /**
  * Created by JWDING on 2017/7/12.
+ * 滚轮选择器
  */
 
 public class MWheelView extends ScrollView {
